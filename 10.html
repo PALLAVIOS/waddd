@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form action="login.php" method="POST">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <span class="error-message" id="username-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <span class="error-message" id="password-error"></span>
+      </div>
+
+      <button type="submit" class="submit-button">Login</button>
+    </form>
+  </div>
+
+  <script>
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const usernameError = document.getElementById('username-error');
+    const passwordError = document.getElementById('password-error');
+
+    function validateUsername() {
+      const username = usernameInput.value;
+      const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
+      if (!regex.test(username)) {
+        usernameError.textContent = 'Username should contain at least one uppercase letter, one lowercase letter, one special character, one number, and be at least 8 characters long.';
+        return false;
+      }
+
+      usernameError.textContent = '';
+      return true;
+    }
+
+    function validatePassword() {
+      const password = passwordInput.value;
+      const regex = /^(?=.*[A-Z])(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
+      if (!regex.test(password)) {
+        passwordError.textContent = 'Password should contain at least one uppercase letter, one special character, and be at least 8 characters long.';
+        return false;
+      }
+
+      passwordError.textContent = '';
+      return true;
+    }
+
+    function validateForm(event) {
+      if (!validateUsername() || !validatePassword()) {
+        event.preventDefault();
+      }
+    }
+
+    usernameInput.addEventListener('input', validateUsername);
+    passwordInput.addEventListener('input', validatePassword);
+    document.querySelector('form').addEventListener('submit', validateForm);
+  </script>
+</body>
+</html>
+In this code, the logi

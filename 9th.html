@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration Page</title>
+    <style>
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Registration</h2>
+    <form action="registration.php" method="POST" onsubmit="return validateForm()">
+        <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required />
+            <span class="error-message" id="firstNameError"></span>
+        </div>
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required />
+            <span class="error-message" id="lastNameError"></span>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
+            <span class="error-message" id="passwordError"></span>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+            <span class="error-message" id="emailError"></span>
+        </div>
+        <div>
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" name="mobile" required />
+            <span class="error-message" id="mobileError"></span>
+        </div>
+        <div>
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
+            <span class="error-message" id="addressError"></span>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        function validateForm()
+         {
+            var firstNameInput = document.getElementById("firstName");
+            var lastNameInput = document.getElementById("lastName");
+            var passwordInput = document.getElementById("password");
+            var emailInput = document.getElementById("email");
+            var mobileInput = document.getElementById("mobile");
+            var addressInput = document.getElementById("address");
+            var firstName = firstNameInput.value;
+            var lastName = lastNameInput.value;
+            var password = passwordInput.value;
+            var email = emailInput.value;
+            var mobile = mobileInput.value;
+            var address = addressInput.value;
+            var regexName = /^[A-Za-z]{6,}$/;
+            var regexPassword = /^.{6,}$/;
+            var regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var regexMobile = /^\d{10}$/;
+
+            if (!regexName.test(firstName)) {
+                document.getElementById("firstNameError").textContent =
+                    "First name should contain alphabets only and be at least 6 characters long.";
+                return false;
+            }
+
+            if (!regexName.test(lastName)) {
+                document.getElementById("lastNameError").textContent =
+                    "Last name should contain alphabets only and be at least 6 characters long.";
+                return false;
+            }
+
+            if (!regexPassword.test(password)) {
+                document.getElementById("passwordError").textContent =
+                    "Password should be at least 6 characters long.";
+                return false;
+            }
+
+            if (!regexEmail.test(email)) {
+                document.getElementById("emailError").textContent =
+                    "Please enter a valid email address.";
+                return false;
+            }
+
+            if (!regexMobile.test(mobile)) {
+                document.getElementById("mobileError").textContent =
+                    "Mobile number should contain 10 digits only.";
+                return false;
+            }
+
+            if (address.trim() === "") {
+                document.getElementById("addressError").textContent =
+                    "Address field should not be empty.";
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+</head>
+<body>
+    <form action="backend.php"></form>
+   <div>
+    <br>
+    <h2> User Registration Form</h2>
+   </div>
+   <div>
+    <br>
+    Name: <input type="text" name="myname">
+   </div>
+   <div>
+    <br>
+    Password: <input type="text" name="mypassword">
+   </div>
+   <div>
+    <br>
+    Email: <input type="email" name="myemail" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" required>
+   </div>
+   <div>
+    <br>
+    contact No.: <input type="tel" name="mycontactnumber">
+   </div> 
+   <div>
+    <br>
+    Sex: Male<input type="radio" name="mygender"> Female<input type="radio" name="mygender"> other<input type="radio" name="mygender">
+   </div>
+   <div>
+    <br>
+    DOB: <input type="date" name="mybirthdate">
+   </div>
+   <div>
+    <br>
+    Language:
+    <br> 
+    Hindi<input type="checkbox" name="mylanguage"><br>
+    English<input type="checkbox" name="mylanguage"><br>
+    Marathi<input type="checkbox" name="mylanguage"><br>
+    Tamil<input type="checkbox" name="mylanguage"><br>
+   </div>
+   <div>
+    <br>
+    address: 
+    <br><textarea name="address" cols="20" rows="10"></textarea>
+    
+   </div>
+   
+</form>
+</body>
+</html>
